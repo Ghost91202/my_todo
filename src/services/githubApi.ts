@@ -1,8 +1,8 @@
 import type { GitHubBranchResponse, GitHubInfoResponse, GitHubRepoResponse } from "../types/github";
 import { showToast } from "../utils";
 
-const username = "maciekt07";
-const repo = "TodoApp";
+const username = "ghost91202";
+const repo = "my_todo";
 const branch = "main";
 
 const repoURL = `https://api.github.com/repos/${username}/${repo}`;
