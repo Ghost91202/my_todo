@@ -1,0 +1,428 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>&#x1f4dd;React&period;js Todo App</title>
+    <style>
+      /* From extension vscode.github */
+      /*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+      .vscode-dark img[src$="\#gh-light-mode-only"],
+      .vscode-light img[src$="\#gh-dark-mode-only"],
+      .vscode-high-contrast:not(.vscode-high-contrast-light) img[src$="\#gh-light-mode-only"],
+      .vscode-high-contrast-light img[src$="\#gh-dark-mode-only"] {
+        display: none;
+      }
+    </style>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css"
+    />
+    <style>
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu",
+          "Droid Sans", sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+    </style>
+    <style>
+      .task-list-item {
+        list-style-type: none;
+      }
+
+      .task-list-item-checkbox {
+        margin-left: -20px;
+        vertical-align: middle;
+        pointer-events: none;
+      }
+    </style>
+    <style>
+      :root {
+        --color-note: #0969da;
+        --color-tip: #1a7f37;
+        --color-warning: #9a6700;
+        --color-severe: #bc4c00;
+        --color-caution: #d1242f;
+        --color-important: #8250df;
+      }
+    </style>
+    <style>
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --color-note: #2f81f7;
+          --color-tip: #3fb950;
+          --color-warning: #d29922;
+          --color-severe: #db6d28;
+          --color-caution: #f85149;
+          --color-important: #a371f7;
+        }
+      }
+    </style>
+    <style>
+      .markdown-alert {
+        padding: 0.5rem 1rem;
+        margin-bottom: 16px;
+        color: inherit;
+        border-left: 0.25em solid #888;
+      }
+
+      .markdown-alert > :first-child {
+        margin-top: 0;
+      }
+
+      .markdown-alert > :last-child {
+        margin-bottom: 0;
+      }
+
+      .markdown-alert .markdown-alert-title {
+        display: flex;
+        font-weight: 500;
+        align-items: center;
+        line-height: 1;
+      }
+
+      .markdown-alert .markdown-alert-title .octicon {
+        margin-right: 0.5rem;
+        display: inline-block;
+        overflow: visible !important;
+        vertical-align: text-bottom;
+        fill: currentColor;
+      }
+
+      .markdown-alert.markdown-alert-note {
+        border-left-color: var(--color-note);
+      }
+
+      .markdown-alert.markdown-alert-note .markdown-alert-title {
+        color: var(--color-note);
+      }
+
+      .markdown-alert.markdown-alert-important {
+        border-left-color: var(--color-important);
+      }
+
+      .markdown-alert.markdown-alert-important .markdown-alert-title {
+        color: var(--color-important);
+      }
+
+      .markdown-alert.markdown-alert-warning {
+        border-left-color: var(--color-warning);
+      }
+
+      .markdown-alert.markdown-alert-warning .markdown-alert-title {
+        color: var(--color-warning);
+      }
+
+      .markdown-alert.markdown-alert-tip {
+        border-left-color: var(--color-tip);
+      }
+
+      .markdown-alert.markdown-alert-tip .markdown-alert-title {
+        color: var(--color-tip);
+      }
+
+      .markdown-alert.markdown-alert-caution {
+        border-left-color: var(--color-caution);
+      }
+
+      .markdown-alert.markdown-alert-caution .markdown-alert-title {
+        color: var(--color-caution);
+      }
+    </style>
+  </head>
+  <body class="vscode-body vscode-dark">
+    <!-- <p align="center">
+<img src="https://raw.githubusercontent.com/ghost91202/my_todo/main/public/logo192.png" width="128px" />
+</p> -->
+    <h1 id="reactjs-todo-app">📝React.js Todo App</h1>
+    <p align="center">
+      <i
+        >A fast and modern Todo app built with React, featuring task sharing via link, P2P Task Sync
+        with WebRTC, theme customization, offline usage as a PWA, and caching for smooth
+        performance.</i
+      >
+    </p>
+    <h2 id="httpsmy-todo-kappa-ebonvercelapp">
+      <a href="https://my-todo-kappa-ebon.vercel.app/">https://my-todo-kappa-ebon.vercel.app/</a>
+    </h2>
+    <p>
+      <img
+        src="https://img.shields.io/github/languages/code-size/ghost91202/my_todo?color=%23b624ff"
+        alt="GitHub code size in bytes"
+      /><br />
+      <img
+        src="https://img.shields.io/github/created-at/ghost91202/my_todo?color=%23b624ff"
+        alt="GitHub created at "
+      /><br />
+      <img
+        src="https://img.shields.io/github/last-commit/ghost91202/my_todo?color=%23b624ff"
+        alt="GitHub last commit"
+      />
+    </p>
+    <!-- <p align="center">
+<img src="https://raw.githubusercontent.com/ghost91202/my_todo/main/screenshots/iPhone%20Mockup%20black.png" width="400px" />
+</p> -->
+    <h2 id="-tech-stack">💻 Tech Stack</h2>
+    <ul style="display: flex; flex-direction: column; gap: 10px">
+      <li style="vertical-align: middle">
+        <img
+          src="https://go-skill-icons.vercel.app/api/icons?i=react"
+          alt="react"
+          width="24"
+          style="vertical-align: middle; margin-right: 4px"
+        />
+        React
+      </li>
+      <li style="vertical-align: middle">
+        <img
+          src="https://go-skill-icons.vercel.app/api/icons?i=typescript"
+          alt="typescript"
+          width="20"
+          style="vertical-align: middle; margin-right: 4px"
+        />
+        Typescript
+      </li>
+      <li style="vertical-align: middle">
+        <img
+          src="https://go-skill-icons.vercel.app/api/icons?i=vite"
+          alt="vite"
+          width="24"
+          style="vertical-align: middle; margin-right: 4px"
+        />
+        Vite
+      </li>
+      <li style="vertical-align: middle">
+        <img
+          src="https://go-skill-icons.vercel.app/api/icons?i=vitest"
+          alt="vitest"
+          width="24"
+          style="vertical-align: middle; margin-right: 4px"
+        />
+        Vitest
+      </li>
+      <li style="vertical-align: middle">
+        <img
+          src="https://go-skill-icons.vercel.app/api/icons?i=emotion"
+          alt="emotion"
+          width="24"
+          style="vertical-align: middle; margin-right: 4px"
+        />
+        Emotion
+      </li>
+      <li style="vertical-align: middle">
+        <img
+          src="https://go-skill-icons.vercel.app/api/icons?i=mui"
+          alt="mui"
+          width="24"
+          style="vertical-align: middle; margin-right: 4px"
+        />
+        Material UI (MUI)
+      </li>
+    </ul>
+    <h2 id="-features">⚡ Features</h2>
+    <h3 id="-share-tasks-by-link-or-qr-code">🔗 Share Tasks by Link or QR Code</h3>
+    <p>Easily share your tasks with others using a link or QR code.</p>
+    <img
+      src="https://raw.githubusercontent.com/ghost91202/my_todo/main/screenshots/ShareDialog.png"
+      width="300px"
+      alt="Shared Task"
+    />
+    <h3 id="-ai-emoji-suggestions">🤖 AI Emoji Suggestions</h3>
+    <p>
+      This feature uses Chrome’s experimental <code>window.LanguageModel</code> API powered by
+      <strong>Gemini Nano</strong> — an on-device LLM.
+    </p>
+    <p>
+      ⚠️ Requires <strong>Chrome Canary 128+</strong> with the
+      <strong>Gemini Nano model installed</strong> -
+      <a
+        href="https://docs.google.com/document/d/1VG8HIyz361zGduWgNG7R_R8Xkv0OOJ8b5C9QKeCjU0c/view?pli=1&amp;tab=t.0#heading=h.witohboigk0o"
+        >Setup guide</a
+      >
+    </p>
+    <p>
+      Code:
+      <a href="https://github.com/ghost91202/my_todo/blob/main/src/components/EmojiPicker.tsx#L116"
+        >src/components/EmojiPicker.tsx</a
+      >
+    </p>
+    <img
+      src="https://raw.githubusercontent.com/ghost91202/my_todo/main/screenshots/emoji-ai.gif"
+      alt="AI Emoji"
+      width="360px"
+      style="border-radius: 12px"
+    />
+    <h3 id="-p2p-task-sync-with-webrtc">🔄 P2P Task Sync with WebRTC</h3>
+    <p>
+      Securely sync all the data between devices using peer-to-peer WebRTC connections. Devices pair
+      via QR code, and your data is transferred directly between them — only minimal server
+      involvement for connection setup, with no data stored or processed in the cloud.
+    </p>
+    <ul>
+      <li>Tasks and categories are auto-merged based on recent edits or deletions</li>
+      <li>For settings and other data, you choose which device to sync from</li>
+    </ul>
+    <p>
+      <video
+        src="https://github-production-user-asset-6210df.s3.amazonaws.com/85953204/459582059-1f2fd620-a64e-42e2-be4f-f17e07fba9a2.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250626%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250626T185723Z&X-Amz-Expires=300&X-Amz-Signature=514e1513d883fab2b5b895d9075d0e0a522497e600e2577d1d11a341ab95aa6f&X-Amz-SignedHeaders=host"
+        controls
+      ></video>
+    </p>
+    <h3 id="-color-themes--dark-mode">🎨 Color Themes &amp; Dark Mode</h3>
+    <p>
+      Choose from various color themes and toggle between light and dark modes to suit your
+      preferences.
+    </p>
+    <img
+      src="https://raw.githubusercontent.com/ghost91202/my_todo/main/screenshots/settings.png"
+      width="500px"
+    />
+    <h3 id="️-task-reading-aloud">🗣️ Task Reading Aloud</h3>
+    <p>
+      Option to have tasks read aloud using the native <code>SpeechSynthesis</code> API, with a
+      selection of voices to choose from.
+    </p>
+    <img
+      src="https://raw.githubusercontent.com/ghost91202/my_todo/main/screenshots/ReadAloud.png"
+      width="260px"
+      alt="Task Reading Aloud"
+    />
+    <h3 id="-importexport-tasks">📥 Import/Export Tasks</h3>
+    <p>
+      Users can import and export tasks to/from JSON files. This feature allows users to back up
+      their tasks or transfer them to other devices easily.
+      <a href="https://github.com/ghost91202/my_todo/blob/main/example-import.json"
+        >Example Import File</a
+      >
+    </p>
+    <h3 id="-progressive-web-app-pwa">📴 Progressive Web App (PWA)</h3>
+    <p>
+      This app is a Progressive Web App (PWA), which means it can be installed on your device,
+      <strong>used even when you're offline</strong> and behave like a native app with shortcuts and
+      app badges.
+    </p>
+    <img
+      src="https://raw.githubusercontent.com/ghost91202/my_todo/main/screenshots/pwaTaskBar.png"
+      alt="taskbar"
+      width="260px"
+    />
+    <h3 id="-update-prompt">🔄 Update Prompt</h3>
+    <p>
+      The app features a custom update prompt that notifies users when a new version is available,
+      allowing for easy refresh to access the latest improvements.
+    </p>
+    <img
+      src="https://raw.githubusercontent.com/ghost91202/my_todo/main/screenshots/UpdatePrompt.png"
+      alt="update prompt"
+      width="260px"
+    />
+    <h3 id="-custom-splash-screens">📱 Custom Splash Screens</h3>
+    <p>
+      The app automatically generates custom splash screens from a single HTML template for various
+      iOS and iPadOS devices in both light and dark modes. These splash screens provide a smooth,
+      native-like launch experience when the app is opened as a PWA.
+    </p>
+    <img
+      src="https://raw.githubusercontent.com/ghost91202/my_todo/main/screenshots/SplashScreen.png"
+      alt="Splash Screen Example"
+      width="450px"
+    />
+    <p>To generate splash screens:</p>
+    <pre><code class="language-bash">npm run generate-splash
+</code></pre>
+    <p>
+      Code:
+      <a href="https://github.com/ghost91202/my_todo/blob/main/scripts/splash-screens"
+        >scripts/splash-screens</a
+      >
+    </p>
+    <h2 id="-installation">👨‍💻 Installation</h2>
+    <p>To install and run the project locally, follow these steps:</p>
+    <ol>
+      <li>Clone the repository:</li>
+    </ol>
+    <pre><code class="language-bash">git <span class="hljs-built_in">clone</span> https://github.com/ghost91202/my_todo.git
+</code></pre>
+    <ol start="2">
+      <li>Navigate to the project directory:</li>
+    </ol>
+    <pre><code class="language-bash"><span class="hljs-built_in">cd</span> my_todo
+</code></pre>
+    <ol start="3">
+      <li>Install the dependencies:</li>
+    </ol>
+    <pre><code class="language-bash">npm install
+</code></pre>
+    <ol start="4">
+      <li>Start the development server:</li>
+    </ol>
+    <pre><code class="language-bash">npm run dev
+</code></pre>
+    <p>
+      The app will now be running at <a href="http://localhost:5173/">http://localhost:5173/</a>.
+    </p>
+    <div class="markdown-alert markdown-alert-tip">
+      <p class="markdown-alert-title">
+        <svg
+          class="octicon octicon-light-bulb mr-2"
+          viewBox="0 0 16 16"
+          version="1.1"
+          width="16"
+          height="16"
+          aria-hidden="true"
+        >
+          <path
+            d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"
+          ></path></svg
+        >Tip
+      </p>
+      <p>
+        For mobile device testing, use <code>npm run dev:host</code> to preview the app on your
+        local network with HTTPS (required for camera features) and a QR code in the terminal for
+        quick access. To enable PWA features in development, see <code>vite.config.ts</code>.
+      </p>
+    </div>
+    <h2 id="-screenshots">📷 Screenshots</h2>
+    <img
+      src="https://raw.githubusercontent.com/ghost91202/my_todo/main/screenshots/ss1.png"
+      width="300px"
+    />
+    <img
+      src="https://raw.githubusercontent.com/ghost91202/my_todo/main/screenshots/ss2.png"
+      width="300px"
+    />
+    <img
+      src="https://raw.githubusercontent.com/ghost91202/my_todo/main/screenshots/ss3.png"
+      width="300px"
+    />
+    <!-- <img src="https://raw.githubusercontent.com/ghost91202/my_todo/main/screenshots/ss4.png" width="300px" />
+
+<img src="https://raw.githubusercontent.com/ghost91202/my_todo/main/screenshots/ss5.png" width="300px" />
+
+<img src="https://raw.githubusercontent.com/ghost91202/my_todo/main/screenshots/ss6.png" width="300px" /> -->
+    <img
+      src="https://raw.githubusercontent.com/ghost91202/my_todo/main/screenshots/sspc1.png"
+      width="650px"
+    />
+    <h2 id="-performance">🚀 Performance</h2>
+    <img
+      src="https://raw.githubusercontent.com/ghost91202/my_todo/main/screenshots/performance.png"
+      width="600px"
+    />
+    <h2 id="credits">Credits</h2>
+    <p>
+      Made with ❤️ by <a href="https://github.com/ghost91202">ghost91202</a>, licensed under
+      <a href="https://github.com/ghost91202/my_todo/blob/main/LICENSE">MIT</a>.
+    </p>
+  </body>
+</html>
